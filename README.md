@@ -1,5 +1,7 @@
 # `json-update-feed`
 
+[![Build Status](https://travis-ci.org/emilbayes/json-update-feed.svg?branch=master)](https://travis-ci.org/emilbayes/json-update-feed)
+
 > Subscribe to a JSON feed for updates
 
 ## Usage
