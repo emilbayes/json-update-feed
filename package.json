@@ -1,0 +1,24 @@
+{
+  "name": "json-update-feed",
+  "version": "0.0.0",
+  "description": "Subscribe to a JSON feed for updates",
+  "main": "index.js",
+  "dependencies": {
+    "expired": "^1.3.12",
+    "semver": "^5.4.1",
+    "simple-get": "^2.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilbayes/json-update-feed.git"
+  },
+  "keywords": [],
+  "author": "Emil Bay <github@tixz.dk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilbayes/json-update-feed/issues"
+  },
+  "homepage": "https://github.com/emilbayes/json-update-feed#readme"
+}
