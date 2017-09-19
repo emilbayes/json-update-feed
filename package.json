@@ -1,6 +1,6 @@
 {
   "name": "json-update-feed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Subscribe to a JSON feed for updates",
   "main": "index.js",
   "dependencies": {
