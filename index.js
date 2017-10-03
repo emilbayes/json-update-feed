@@ -59,7 +59,20 @@ Updater.prototype.check = function (version, opts, cb) {
       return ondone('update-not-available', false)
     }
 
-    var sorted = data.sort(semver.rcompare)
+    var validFeed = data.every(function (d) {
+      return semver.valid(d.version)
+    })
+
+    if (!validFeed) {
+      var err = new Error('Malformed feed')
+      err.data = data
+      return ondone(err)
+    }
+
+    var sorted = data.sort(function (a, b) {
+      return semver.rcompare(a.version, b.version)
+    })
+
     var latest = sorted[0]
     self.feed = sorted
 
