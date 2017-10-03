@@ -87,21 +87,25 @@ Updater.prototype.check = function (version, opts, cb) {
 Updater.prototype.latest = function (version, cb) {
   var self = this
 
+  if (typeof version == 'function') {
+    cb = version
+    version = null
+  }
+  if (version == null) version = ''
+
   // wait for ready
-  if (self.feed == null) return cb(new Error('Feed not ready'))
+  if (self.feed == null) return self.check(version, onfeed)
+  onfeed(null)
 
-  // Naive left-search for now
-  var entry = null
-  for (var i = 0; i < self.feed.length; i++) {
-    if (semver.satisfies(self.feed[i], version)) {
-      entry = self.feed[i]
-      break
-    }
+
+  function onfeed (err, latest) {
+    if (err) cb(err)
+
+    var versions = self.feed.map(function (entry) { return entry.version })
+    var latest = semver.maxSatisfying(versions, version)
+
+    if (latest == null) return cb(null, false)
+
+    return cb(null, self.feed[versions.indexOf(latest)])
   }
-
-  if (entry == null) {
-    return cb(new Error('No versions available'))
-  }
-
-  return cb(null, entry)
 }
